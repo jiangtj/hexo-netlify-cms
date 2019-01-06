@@ -1,7 +1,7 @@
 # Hexo Netlify CMS
 [![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
 
-It's a plug for netlify-cms, so you can use it easily.
+It's a hexo plug for netlify-cms, so you can use it easily.
 
 ## How to use
 ### Step1: Add dependency
@@ -19,10 +19,11 @@ netlify_cms:
 ```
 ### Step3: Enable service in netlify
 
-Enable netlify git-gateway
-![](imgs/git-gateway.png)
+Enable netlify git-gateway  
+![](imgs/git-gateway.png)  
 
-Add netlify-identity-widget.js
+Add netlify-identity-widget.js   
+code is `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`  
 ![](imgs/snippet.png)
 
 **Note: suggest set pegistration preferences invite only**
