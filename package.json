@@ -1,0 +1,13 @@
+{
+  "name": "hexo-netlify-cms",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/JiangTJ/hexo-netlify-cms.git",
+  "author": "MrTT <jiang.taojie@foxmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "hexo-fs": "^1.0.2",
+    "js-yaml": "^3.12.1"
+  }
+}
