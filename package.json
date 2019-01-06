@@ -7,7 +7,6 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "hexo-fs": "^1.0.2",
     "js-yaml": "^3.12.1"
   }
 }
