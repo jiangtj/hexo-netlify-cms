@@ -11,9 +11,10 @@ hexo.extend.generator.register('generateNetlifyCMS', function(locals){
   },{
     path: 'admin/config.yml',
     data: function(){
-      var config = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'admin/config.yml')));
-      Object.assign(config, hexo.theme.config.netlify_cms, hexo.config.netlify_cms)
-      return yaml.safeDump(config);
+      var hexoConfig = Object.assign({}, hexo.theme.config.netlify_cms, hexo.config.netlify_cms);
+      var filePath = hexoConfig.config_file||path.join(__dirname, 'admin/config.yml');
+      var yamlConfig = yaml.safeLoad(fs.readFileSync(filePath));
+      return yaml.safeDump(Object.assign(yamlConfig,hexoConfig));
     }
   }];
 });
