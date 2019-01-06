@@ -5,32 +5,22 @@ backend:
 media_folder: source/images
 public_folder: /images
 
-collections: # A list of collections the CMS should be able to edit
-  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Post" # Used in the UI, ie.: "New Post"
+ # A list of collections the CMS should be able to edit
+collections:
+  # Used in routes, ie.: /admin/collections/:slug/edit
+  - name: "posts"
+    # Used in the UI, ie.: "New Post"
+    label: "Post"
     folder: "source/_posts" # The path to the folder where the documents are stored
     sort: "date:desc"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
       - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-      - {label: "Banner", name: "banner", widget: "image", class: "image featured"}
-      - {label: "Short Description", name: "shortdesc", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-    meta: # Meta data fields. Just like fields, but without any preview element
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Categories", name: "categories", widget: "string"}
-      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
-  - name: "data"
-    label: "Data"
-    files:
-      - name: "characters"
-        label: "Characters"
-        file: "source/_data/characters.yml"
-        fields:
-          - label: "Characters"
-            name: "list"
-            widget: "list"
-            fields:
-              - {label: "Name", name: "name", widget: "string"}
-              - {label: "Image", name: "image", widget: "image", media_folder: "assets/images"}
-              - {label: "Description", name: "description", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: false}
+      - {label: "Updated Date", name: "updated", widget: "datetime", required: false}
+      - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Layout", name: "layout", default: "post", required: false}
+      - {label: "Permalink", name: "permalink", widget: "string", required: false}
