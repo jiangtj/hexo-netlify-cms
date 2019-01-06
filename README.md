@@ -34,3 +34,7 @@ Now, Netlify CMS is available in path `your-site/admin`
 Any vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)   
 
 In addition, you can customize the netlify CMS configuration file path to override [the default](admin/config.yml)
+```yml
+netlify_cms:
+  config_file: netlify.yaml
+```
