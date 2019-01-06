@@ -1,7 +1,16 @@
 {
   "name": "hexo-netlify-cms",
-  "version": "0.0.5",
+  "keywords": [
+    "hexo",
+    "netlify-cms"
+  ],
+  "version": "0.0.6",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "admin/",
+    "README.md"
+  ],
   "repository": "https://github.com/JiangTJ/hexo-netlify-cms.git",
   "author": "MrTT <jiang.taojie@foxmail.com>",
   "license": "MIT",
