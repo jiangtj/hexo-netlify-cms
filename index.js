@@ -20,7 +20,7 @@ hexo.extend.generator.register('generateNetlifyCMS', function(locals){
           return {
             name: page.source.replace(/\//g, '-'),
             label: page.title,
-            file: page.source,
+            file: path.join(hexo.config.source_dir,page.source),
             fields: [
               {label: 'Title', name: 'title', widget: 'string'}, 
               {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss", required: false}, 
