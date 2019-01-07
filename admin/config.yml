@@ -2,6 +2,8 @@ backend:
   name: test-repo
   branch: master
 
+auto_pages: true
+
 media_folder: source/images
 public_folder: /images
 

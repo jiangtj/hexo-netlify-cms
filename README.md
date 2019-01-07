@@ -1,4 +1,5 @@
 # Hexo Netlify CMS
+![status](https://img.shields.io/badge/status-EarlyAccess-red.svg)
 [![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
 
 It's a hexo plug for netlify-cms, so you can use it easily.
@@ -38,4 +39,12 @@ In addition, you can customize the netlify CMS configuration file path to overri
 ```yml
 netlify_cms:
   config_file: netlify.yaml
+```
+
+## Debug
+```
+yarn link
+cd example
+yarn link hexo-netlify-cms
+hexo s
 ```
