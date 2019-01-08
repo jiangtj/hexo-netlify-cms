@@ -88,4 +88,6 @@ netlify_cms:
       delete: false
       editor:
         preview: false
+  scripts:
+    - youtube
  

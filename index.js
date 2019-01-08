@@ -3,12 +3,19 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const ejs = require('ejs');
 
 hexo.extend.generator.register('generateNetlifyCMS', function(locals){
   return [{
     path: 'admin/index.html',
     data: function(){
-      return hexo.render.renderSync({path: path.join(__dirname, 'admin/index.ejs')},hexo.config);
+      if (!hexo.config.netlify_cms){
+        hexo.config.netlify_cms= {};
+      }
+      if (!hexo.config.netlify_cms.scripts){
+        hexo.config.netlify_cms.scripts = [];
+      }
+      return hexo.render.renderSync({path:path.join(__dirname, 'admin/index.ejs')},hexo.config);
     }
   },{
     path: 'admin/config.yml',
