@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
@@ -6,7 +8,7 @@ hexo.extend.generator.register('generateNetlifyCMS', function(locals){
   return [{
     path: 'admin/index.html',
     data: function(){
-      return fs.readFileSync(path.join(__dirname, 'admin/index.html'));
+      return hexo.render.renderSync({path: path.join(__dirname, 'admin/index.ejs')},hexo.config);
     }
   },{
     path: 'admin/config.yml',
