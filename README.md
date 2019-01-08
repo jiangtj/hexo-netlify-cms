@@ -1,9 +1,9 @@
 # Hexo Netlify CMS
 [![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
 
-It's a hexo plug for netlify-cms, so you can use it easily.   
+It's a hexo plugin for netlify-cms, so you can use it easily.   
 
-[Live Demo](https://github.com/JiangTJ/hexo-netlify-cms-example)
+[Live Demo](https://github.com/JiangTJ/hexo-netlify-cms-example) | [中文文档](README-ZH.md)
 
 ## How to use
 ### Step1: Add dependency
