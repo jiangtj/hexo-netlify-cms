@@ -34,14 +34,30 @@ code is `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js
 Now, Netlify CMS is available in path `your-site/admin`
 
 
-## Advance
-Any vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)   
+## Advance 
+You can customize the pages-auto-generate config through `pages` var
+```yml
+netlify_cms:
+  # pages auto generate
+  pages: 
+    enabled: true
+    # over page collection config
+    # if fields not set, would use posts fields config
+    config:
+      label: "Page"
+      delete: false
+      editor:
+        preview: true
+      # fields: 
+```
 
-In addition, you can customize the netlify CMS configuration file path to override [the default](admin/config.yml)
+You can customize the netlify CMS configuration file path to override [the default](admin/config.yml)
 ```yml
 netlify_cms:
   config_file: netlify.yaml
 ```
+
+And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  
 
 ## Debug
 ```
@@ -50,3 +66,4 @@ cd example
 yarn link hexo-netlify-cms
 hexo s
 ```
+PR welcome!
