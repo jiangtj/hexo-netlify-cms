@@ -27,6 +27,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - js/**
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -89,5 +90,5 @@ netlify_cms:
       editor:
         preview: false
   scripts:
-    - youtube
+    - js/cms/youtube.js
  
