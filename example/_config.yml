@@ -89,6 +89,11 @@ netlify_cms:
       delete: false
       editor:
         preview: false
+      fields: 
+        - {label: "Title", name: "title", widget: "string"}
+        - {label: "Publish Date", name: "date", widget: "datetime", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
+        - {label: "Updated Date", name: "updated", widget: "date", dateFormat: "YYYY-MM-DD", required: false}
+        - {label: "Body", name: "body", widget: "markdown", required: false}
   scripts:
     - js/cms/youtube.js
  
