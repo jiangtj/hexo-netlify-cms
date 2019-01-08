@@ -34,7 +34,7 @@ Now, Netlify CMS is available in path `your-site/admin`
 
 
 ## Advance 
-You can customize the pages-auto-generate config through `pages` var
+Customize the pages-auto-generate config through `pages` var
 ```yml
 netlify_cms:
   # pages auto generate
@@ -50,10 +50,28 @@ netlify_cms:
       # fields: 
 ```
 
-You can customize the netlify CMS configuration file path to override [the default](admin/config.yml)
+Customize the netlify CMS configuration file path to override [the default](admin/config.yml)
 ```yml
 netlify_cms:
   config_file: netlify.yaml
+```
+
+Open/Close over_format (default true)
+```yml
+netlify_cms:
+  over_format: true
+```
+
+Add custom script support, can be used to customize component or css   
+such as：    
+Add `example/source/js/cms/youtube.js` to your site   
+```yml
+# need skip render
+skip_render:
+  - js/**
+netlify_cms:
+  scripts:
+    - js/cms/youtube.js
 ```
 
 And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  

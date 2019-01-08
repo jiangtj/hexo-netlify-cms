@@ -34,7 +34,7 @@ Okay, 现在Netlify CMS已经好了, 你可以访问`your-site/admin`查看
 
 
 ## 其他配置
-你可以自定义pages自动生成配置
+自定义pages自动生成配置
 ```yml
 netlify_cms:
   # pages auto generate
@@ -50,10 +50,28 @@ netlify_cms:
       # fields: 
 ```
 
-你还可以自定义配置文件，覆盖[默认的](admin/config.yml)
+自定义配置文件，覆盖[默认的](admin/config.yml)
 ```yml
 netlify_cms:
   config_file: netlify.yaml
+```
+
+开启/关闭覆盖时间格式配置(默认true)
+```yml
+netlify_cms:
+  over_format: true
+```
+
+添加脚本, 用于自定义组件和预览样式   
+例如：    
+添加`example/source/js/cms/youtube.js`至你的博客下   
+```yml
+# 需要跳过配置
+skip_render:
+  - js/**
+netlify_cms:
+  scripts:
+    - js/cms/youtube.js
 ```
 
 另外，其他的`netlify_cms`配置变量可以在[Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)中找到  
