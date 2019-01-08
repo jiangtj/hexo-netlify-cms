@@ -1,5 +1,4 @@
 # Hexo Netlify CMS
-![status](https://img.shields.io/badge/status-EarlyAccess-red.svg)
 [![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
 
 It's a hexo plug for netlify-cms, so you can use it easily.   
