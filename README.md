@@ -64,7 +64,8 @@ netlify_cms:
 
 Add custom script support, can be used to customize component or css   
 such as：    
-Add `example/source/js/cms/youtube.js` to your site   
+Add `example/source/js/cms/youtube.js` to your site  
+Or add [img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js) to your site   
 ```yml
 # need skip render
 skip_render:
@@ -72,6 +73,7 @@ skip_render:
 netlify_cms:
   scripts:
     - js/cms/youtube.js
+    #- js/cms/img.js
 ```
 
 And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  
