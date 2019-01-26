@@ -74,6 +74,9 @@ netlify_cms:
   scripts:
     - js/cms/youtube.js
     #- js/cms/img.js
+    #Or use jsdelivr cdn
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/youtube.js
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/img.js
 ```
 
 And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  
