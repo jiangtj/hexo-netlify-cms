@@ -64,7 +64,7 @@ netlify_cms:
 
 Add custom script support, can be used to customize component or css   
 such as：    
-Add `example/source/js/cms/youtube.js` to your site  
+Add [youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js) to your site  
 Or add [img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js) to your site   
 ```yml
 # need skip render

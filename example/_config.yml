@@ -95,5 +95,6 @@ netlify_cms:
         - {label: "Updated Date", name: "updated", widget: "date", dateFormat: "YYYY-MM-DD", required: false}
         - {label: "Body", name: "body", widget: "markdown", required: false}
   scripts:
-    - js/cms/youtube.js
- 
+    - https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/youtube.js
+    - https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/img.js
+

@@ -64,7 +64,7 @@ netlify_cms:
 
 添加脚本, 用于自定义组件和预览样式   
 例如：    
-添加`example/source/js/cms/youtube.js`至你的博客下  
+添加[youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js)至你的博客下  
 或者添加[img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js)至你的博客下   
 ```yml
 # 需要跳过渲染
@@ -74,6 +74,9 @@ netlify_cms:
   scripts:
     - js/cms/youtube.js
     #- js/cms/img.js
+    #或者使用 jsdelivr cdn
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/youtube.js
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/img.js
 ```
 
 另外，其他的`netlify_cms`配置变量可以在[Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)中找到  
