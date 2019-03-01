@@ -80,7 +80,7 @@ netlify_cms:
 
 And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  
 
-# Tips
+## Tips
 1. Suggest enable `Netlify Large Media`, can make media loading faster。[Large Media Docs](https://www.netlify.com/docs/large-media/)
 
 ## Debug
