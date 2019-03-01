@@ -81,6 +81,9 @@ netlify_cms:
 
 另外，其他的`netlify_cms`配置变量可以在[Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)中找到  
 
+# 提示
+1. 建议开启`Netlify Large Media`，可以使媒体载入更快。[Large Media Docs](https://www.netlify.com/docs/large-media/)
+
 ## 调试
 ```
 yarn link
