@@ -9,8 +9,12 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lavas-project/hexo-pwa.git"
+    "url": "git+https://github.com/lavas-project/hexo-pwa.git"
   },
+  "bugs": {
+    "url": "https://github.com/JiangTJ/hexo-cli/issues"
+  },
+  "homepage": "https://github.com/JiangTJ/hexo-cli#readme",
   "author": "MrTT <jiang.taojie@foxmail.com>",
   "license": "LGPL-3.0",
   "private": false,
