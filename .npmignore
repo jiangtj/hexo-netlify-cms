@@ -1,4 +1,4 @@
-imgs/
-example/
+/imgs/
+/example/
 node_modules/
 *.log
