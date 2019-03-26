@@ -84,10 +84,15 @@ And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlif
 1. Suggest enable `Netlify Large Media`, can make media loading faster。[Large Media Docs](https://www.netlify.com/docs/large-media/)
 
 ## Debug
+Step 1: exce cmd as following:
 ```
 yarn link
+git clone --recursive https://github.com/JiangTJ/hexo-netlify-cms-example.git example
 cd example
 yarn link hexo-netlify-cms
-hexo s
+yarn install
 ```
-PR welcome!
+
+Step 2: Modify example `backend.name` to `test-repo`
+
+Step 3: Run `hexo s`

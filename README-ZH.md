@@ -85,10 +85,15 @@ netlify_cms:
 1. 建议开启`Netlify Large Media`，可以使媒体载入更快。[Large Media Docs](https://www.netlify.com/docs/large-media/)
 
 ## 调试
+Step 1: 执行下面的命令：
 ```
 yarn link
+git clone --recursive https://github.com/JiangTJ/hexo-netlify-cms-example.git example
 cd example
 yarn link hexo-netlify-cms
-hexo s
+yarn install
 ```
-欢迎PR!
+
+Step 2: 修改例子中 `backend.name` 为 `test-repo`
+
+Step 3: 运行 `hexo s`
