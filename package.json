@@ -7,13 +7,10 @@
   ],
   "version": "0.1.2",
   "main": "index.js",
-  "files": [
-    "index.js",
-    "admin/",
-    "lib/",
-    "README.md"
-  ],
-  "repository": "https://github.com/JiangTJ/hexo-netlify-cms.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lavas-project/hexo-pwa.git"
+  },
   "author": "MrTT <jiang.taojie@foxmail.com>",
   "license": "LGPL-3.0",
   "private": false,
