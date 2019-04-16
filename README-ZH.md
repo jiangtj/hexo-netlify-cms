@@ -1,5 +1,7 @@
 # Hexo Netlify CMS
-[![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
+[![](https://img.shields.io/npm/v/hexo-netlify-cms.svg?style=popout-square)](https://www.npmjs.com/package/hexo-netlify-cms)
+![npm](https://img.shields.io/npm/dt/hexo-netlify-cms.svg?style=popout-square)
+![npm](https://img.shields.io/npm/l/hexo-netlify-cms.svg?style=popout-square)   
 
 这是一个Netlify CMS的Hexo插件，你可以使用它，简单的开启Netlify CMS服务.   
 

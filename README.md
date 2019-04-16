@@ -1,5 +1,7 @@
 # Hexo Netlify CMS
-[![](https://img.shields.io/npm/v/hexo-netlify-cms.svg)](https://www.npmjs.com/package/hexo-netlify-cms)   
+[![](https://img.shields.io/npm/v/hexo-netlify-cms.svg?style=popout-square)](https://www.npmjs.com/package/hexo-netlify-cms)
+![npm](https://img.shields.io/npm/dt/hexo-netlify-cms.svg?style=popout-square)
+![npm](https://img.shields.io/npm/l/hexo-netlify-cms.svg?style=popout-square)
 
 It's a hexo plugin for netlify-cms, so you can use it easily.   
 
