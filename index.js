@@ -19,9 +19,9 @@ hexo.extend.generator.register('generateNetlifyCMS', (locals) => {
 
 
   let fields = Object.assign({},
-    hexoConfig.global_fields,
+    defaultConfig.global_fields,
     configFileConfig.global_fields,
-    defaultConfig.global_fields
+    hexoConfig.global_fields
   );
 
   delete (hexoConfig.global_fields);
@@ -29,6 +29,10 @@ hexo.extend.generator.register('generateNetlifyCMS', (locals) => {
   delete (defaultConfig.global_fields);
 
   let config = merge({}, defaultConfig, configFileConfig, hexoConfig);
+
+  if (hexo.env.debug) {
+    config.backend.name = 'test-repo';
+  }
 
   let scripts = config.scripts;
   delete (config.scripts);
