@@ -2,37 +2,35 @@ backend:
   name: git-gateway
   branch: master
 
-# pages auto generate
-pages: 
-  enabled: true
-  # over page collection config
-  # if fields not set, would use posts fields config
-  config:
-    label: "Page"
-    delete: false
-    editor:
-      preview: true
-    # fields: 
-# through hexo config over fields
-over_format: true
+# auto generator
+auto_generator:
+  post: 
+    all_posts:
+      #enabled: true
+      label: "Post"
+      folder: "source/_posts" # The path to the folder where the documents are stored
+      create: true # Allow users to create new documents in this collection
+      editor:
+        preview: true
+  page: 
+    enabled: true
+    config:
+      label: "Page"
+      delete: false
+      editor:
+        preview: true
 
-media_folder: source/images
-public_folder: /images
-
-# A list of collections the CMS should be able to edit
-collections:
-  # Used in routes, ie.: /admin/collections/:slug/edit
-  - name: "posts"
-    # Used in the UI, ie.: "New Post"
-    label: "Post"
-    folder: "source/_posts" # The path to the folder where the documents are stored
-    sort: "date:desc"
-    create: true # Allow users to create new documents in this collection
-    fields: # The fields each document in this collection have
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Categories", name: "categories", widget: "list", required: false}
-      - {label: "Body", name: "body", widget: "markdown", required: false}
-      - {label: "Permalink", name: "permalink", widget: "string", required: false}
-      - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+# Set global fields
+global_fields:
+  # through hexo config over fields
+  over_format: true
+  default: &ref_default
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
+    - {label: "Tags", name: "tags", widget: "list", required: false}
+    - {label: "Categories", name: "categories", widget: "list", required: false}
+    - {label: "Body", name: "body", widget: "markdown", required: false}
+    - {label: "Permalink", name: "permalink", widget: "string", required: false}
+    - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+  post: *ref_default
+  page: *ref_default

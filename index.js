@@ -3,26 +3,34 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const merge = require('lodash/merge');
 const renderAdmin = require('./lib/renderAdmin');
 const cmsGenerator = require('./lib/cmsGenerator');
 
 hexo.extend.generator.register('generateNetlifyCMS', function(locals){
 
-  //Get config
-  let hexoConfig = Object.assign({}, hexo.theme.config.netlify_cms, hexo.config.netlify_cms);
-  let filePath = hexoConfig.config_file||path.join(__dirname, 'admin/config.yml');
-  let yamlConfig = yaml.safeLoad(fs.readFileSync(filePath));
-  Object.assign(yamlConfig,hexoConfig)
+  let hexoConfig = merge({}, hexo.theme.config.netlify_cms, hexo.config.netlify_cms);
+  let defaultConfig = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'admin/config.yml')));
+  let configFileConfig = {}
+  if (hexoConfig.config_file) {
+    configFileConfig = yaml.safeLoad(fs.readFileSync(hexoConfig.config_file));
+    delete(hexoConfig.config_file);
+  }
+
+  let config = merge(defaultConfig, configFileConfig, hexoConfig);
+
+  let scripts = config.scripts;
+  delete(config.scripts);
 
   return [{
     path: 'admin/index.html',
     data: function(){
-      return renderAdmin(hexo,yamlConfig);
+      return renderAdmin(hexo, scripts);
     }
   },{
     path: 'admin/config.yml',
     data: function(){
-      return cmsGenerator(hexo,locals,yamlConfig);
+      return cmsGenerator(hexo,locals,config);
     }
   }];
   
