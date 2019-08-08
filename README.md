@@ -7,109 +7,98 @@ It's a hexo plugin for netlify-cms, so you can use it easily.
 
 [Live Demo](https://github.com/JiangTJ/hexo-netlify-cms-example) | [中文文档](README-ZH.md)
 
-## How to use
-### Step1: Add dependency
+## Quick start
+
+### Step1: Adding dependencies
+
 ```bash
 yarn add hexo-netlify-cms
-// or npm
-npm i hexo-netlify-cms --save
 ```
-### Step2: Add config in hexo
-```yaml
-netlify_cms:
-  backend:
-    name: git-gateway
-    branch: master
-```
-### Step3: Enable service in netlify
 
-Enable netlify git-gateway  
-![](imgs/git-gateway.png)  
+`hexo s --debug` add `--debug` option, open `http://localhost:400/admin/` to preview
 
-Add netlify-identity-widget.js   
-code is `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`  
+### Step2: Open the service in Netlify
+
+1. You need to push your **source code** to the GitHub repository and use this project to enable the netlify service.
+
+2. Open the netlify git-gateway service
+![](imgs/git-gateway.png)
+
+3. Add netlify-identity-widget.js, the code is as follows
+`<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`
 ![](imgs/snippet.png)
 
-**Note: suggest set pegistration preferences invite only**
+**Note: It is recommended to set authentication to invitation only mode**
 
-Now, Netlify CMS is available in path `your-site/admin`
+Wait for the deployment to complete, visit `${your-site}/admin/` to view and use
 
-## Advance 
-Customize the auto-generate or feilds config as following:
+## Advance configuration
+
+Set the custom configuration file, overwrite [default](admin/config.yml), the definition variable of the custom configuration file is equivalent to the one defined in the `netlify_cms` variable of the hexo configuration file.
 ```yml
 netlify_cms:
-  # auto generator
-  auto_generator:
-    post: 
-      all_posts:
-        #enabled: true
-        label: "Post"
-        folder: "source/_posts" # The path to the folder where the documents are stored
-        create: true # Allow users to create new documents in this collection
-        editor:
-          preview: true
-    page: 
-      enabled: true
-      config:
-        label: "Page"
-        delete: false
-        editor:
-          preview: true
-
-  # Set global fields
-  global_fields:
-    # through hexo config over fields
-    over_format: true
-    default:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Categories", name: "categories", widget: "list", required: false}
-      - {label: "Body", name: "body", widget: "markdown", required: false}
-      - {label: "Permalink", name: "permalink", widget: "string", required: false}
-      - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
-    #post:
-    #page:
+  config_file: netlify-cms.yaml
 ```
 
-Customize the netlify CMS configuration file path to override [the default](admin/config.yml)
+Set post and page auto generator
+```yml
+auto_generator:
+  post:
+    # If you have multiple Post folders, define multiple here, see https://github.com/jiangtj/blog/blob/master/netlify-cms.yaml
+    all_posts:
+      # set to false, turn off the default Post
+      #enabled: true
+      label: "Post"
+      folder: "source/_posts"
+      create: true
+      editor:
+        preview: true
+  # PageGeneration Configuration
+  page: 
+    enabled: true
+    config:
+      label: "Page"
+      # By default, deleting Page files is prohibited.
+      delete: false
+      editor:
+        preview: true
+```
+
+Set global fields
+```yml
+global_fields:
+  # Overwrite time format by hexo configuration
+  over_format: true
+  # default fields
+  default:
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH :mm:ss", required: false}
+    - {label: "Tags", name: "tags", widget: "list", required: false}
+    - {label: "Categories", name: "categories", widget: "list", required: false}
+    - {label: "Body", name: "body", widget: "markdown", required: false}
+    - {label: "Permalink", name: "permalink", widget: "string", required: false}
+    - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+  # default post fields, if set, posts fields will be taken from here
+  #post:
+  # default page fields, the same reason
+  #page:
+```
+
+Add scripts for custom components and preview styles
+E.g:    
+Add [youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js) to your blog
+Or add [img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js) to your blog
 ```yml
 netlify_cms:
-  config_file: netlify.yaml
+  scripts:
+    - js/cms/youtube.js
+    #- js/cms/img.js
+    #或使用jsdelivr cdn
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/youtube.js
+    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/img.js
 ```
 
-Add custom script support, can be used to customize component or css   
-such as：    
-Add [youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js) to your site  
-Or add [img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js) to your site   
-```yml
-# need skip render
-skip_render:
-  - js/**
-netlify_cms:
-  scripts:
-    - js/cms/youtube.js
-    #- js/cms/img.js
-    #Or use jsdelivr cdn
-    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/youtube.js
-    #- https://cdn.jsdelivr.net/gh/JiangTJ/hexo-netlify-cms-example@0.0.1/source/js/cms/img.js
-```
-
-And other vars in `netlify_cms` can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)  
+In addition, other `netlify_cms` configuration variables can be found in [Netlify CMS](https://www.netlifycms.org/docs/configuration-options/)
 
 ## Tips
-1. Suggest enable `Netlify Large Media`, can make media loading faster。[Large Media Docs](https://www.netlify.com/docs/large-media/)
-
-## Debug
-Step 1: exce cmd as following:
-```
-yarn link
-git clone --recursive https://github.com/JiangTJ/hexo-netlify-cms-example.git example
-cd example
-yarn link hexo-netlify-cms
-yarn install
-```
-
-Step 2: Modify example `backend.name` to `test-repo`
-
-Step 3: Run `hexo s`
+1. It is recommended to enable `Netlify Large Media` to make the media load faster. [Large Media Docs](https://www.netlify.com/docs/large-media/)
