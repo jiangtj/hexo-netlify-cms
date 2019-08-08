@@ -35,32 +35,47 @@ code is `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js
 Now, Netlify CMS is available in path `your-site/admin`
 
 ## Advance 
-Customize the pages-auto-generate config through `pages` var
+Customize the auto-generate or feilds config as following:
 ```yml
 netlify_cms:
-  # pages auto generate
-  pages: 
-    enabled: true
-    # over page collection config
-    # if fields not set, would use posts fields config
-    config:
-      label: "Page"
-      delete: false
-      editor:
-        preview: true
-      # fields: 
+  # auto generator
+  auto_generator:
+    post: 
+      all_posts:
+        #enabled: true
+        label: "Post"
+        folder: "source/_posts" # The path to the folder where the documents are stored
+        create: true # Allow users to create new documents in this collection
+        editor:
+          preview: true
+    page: 
+      enabled: true
+      config:
+        label: "Page"
+        delete: false
+        editor:
+          preview: true
+
+  # Set global fields
+  global_fields:
+    # through hexo config over fields
+    over_format: true
+    default:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+      - {label: "Permalink", name: "permalink", widget: "string", required: false}
+      - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+    #post:
+    #page:
 ```
 
 Customize the netlify CMS configuration file path to override [the default](admin/config.yml)
 ```yml
 netlify_cms:
   config_file: netlify.yaml
-```
-
-Open/Close over_format (default true)
-```yml
-netlify_cms:
-  over_format: true
 ```
 
 Add custom script support, can be used to customize component or css   
