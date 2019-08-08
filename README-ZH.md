@@ -7,61 +7,80 @@
 
 [Live Demo](https://github.com/JiangTJ/hexo-netlify-cms-example) | [English Docs](README.md)
 
-## 如何使用
+## 快速开始
+
 ### Step1: 添加依赖
 ```bash
 yarn add hexo-netlify-cms
-// or npm
-npm i hexo-netlify-cms --save
 ```
-### Step2: 在Hexo中添加配置
-```yaml
-netlify_cms:
-  backend:
-    name: git-gateway
-    branch: master
-```
-### Step3: 在Netlify中开启服务
 
-开启netlify git-gateway服务
+`hexo s --debug`添加`--debug`选项，打开`http://localhost:400/admin/`可进行预览
+
+### Step2: 在Netlify中开启服务
+
+1. 需要将你的**源码**push至GitHub仓库，并使用该源码项目启用netlify服务
+
+2. 开启netlify git-gateway服务
 ![](imgs/git-gateway.png)  
 
-添加netlify-identity-widget.js, 代码如下   
+3. 添加netlify-identity-widget.js, 代码如下   
 `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`  
 ![](imgs/snippet.png)
 
 **注意： 建议将身份认证设为仅邀请模式**
 
-Okay, 现在Netlify CMS已经好了, 你可以访问`your-site/admin`查看
-
+等待部署完成, 访问`${your-site}/admin/`查看与使用
 
 ## 其他配置
-自定义pages自动生成配置
+
+设置自定义配置文件，覆盖[默认的](admin/config.yml)，自定义配置文件的定义变量与hexo配置文件的`netlify_cms`变量中定义的等效
 ```yml
 netlify_cms:
-  # pages auto generate
-  pages: 
+  config_file: netlify-cms.yaml
+```
+
+设置post与page自动生成器
+```yml
+auto_generator:
+  post: 
+    # 如果你有多个Post文件夹，在这里定义多个，见https://github.com/jiangtj/blog/blob/master/netlify-cms.yaml
+    all_posts:
+      # 设置为false，关闭默认的Post
+      #enabled: true
+      label: "Post"
+      folder: "source/_posts"
+      create: true
+      editor:
+        preview: true
+  # Page生成配置
+  page: 
     enabled: true
-    # over page collection config
-    # if fields not set, would use posts fields config
     config:
       label: "Page"
+      # 默认禁止删除Page文件
       delete: false
       editor:
         preview: true
-      # fields: 
 ```
 
-自定义配置文件，覆盖[默认的](admin/config.yml)
+设置全局的fields
 ```yml
-netlify_cms:
-  config_file: netlify.yaml
-```
-
-开启/关闭覆盖时间格式配置(默认true)
-```yml
-netlify_cms:
+global_fields:
+  # 通过hexo配置覆盖时间格式
   over_format: true
+  # 默认的fields
+  default:
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
+    - {label: "Tags", name: "tags", widget: "list", required: false}
+    - {label: "Categories", name: "categories", widget: "list", required: false}
+    - {label: "Body", name: "body", widget: "markdown", required: false}
+    - {label: "Permalink", name: "permalink", widget: "string", required: false}
+    - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
+  # 默认的post fields，如果设置，posts的fields将从这里取
+  #post:
+  # 默认的page fields，同理
+  #page:
 ```
 
 添加脚本, 用于自定义组件和预览样式   
@@ -69,9 +88,6 @@ netlify_cms:
 添加[youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js)至你的博客下  
 或者添加[img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js)至你的博客下   
 ```yml
-# 需要跳过渲染
-skip_render:
-  - js/**
 netlify_cms:
   scripts:
     - js/cms/youtube.js
@@ -85,17 +101,3 @@ netlify_cms:
 
 ## 提示
 1. 建议开启`Netlify Large Media`，可以使媒体载入更快。[Large Media Docs](https://www.netlify.com/docs/large-media/)
-
-## 调试
-Step 1: 执行下面的命令：
-```
-yarn link
-git clone --recursive https://github.com/JiangTJ/hexo-netlify-cms-example.git example
-cd example
-yarn link hexo-netlify-cms
-yarn install
-```
-
-Step 2: 修改例子中 `backend.name` 为 `test-repo`
-
-Step 3: 运行 `hexo s`
