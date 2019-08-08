@@ -24,7 +24,7 @@ auto_generator:
 global_fields:
   # through hexo config over fields
   over_format: true
-  default: &ref_default
+  default:
     - {label: "Title", name: "title", widget: "string"}
     - {label: "Publish Date", name: "date", widget: "datetime", dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm:ss", format: "YYYY-MM-DD HH:mm:ss", required: false}
     - {label: "Tags", name: "tags", widget: "list", required: false}
@@ -32,5 +32,5 @@ global_fields:
     - {label: "Body", name: "body", widget: "markdown", required: false}
     - {label: "Permalink", name: "permalink", widget: "string", required: false}
     - {label: "Comments", name: "comments", widget: "boolean", default: true, required: false}
-  post: *ref_default
-  page: *ref_default
+  #post:
+  #page:
