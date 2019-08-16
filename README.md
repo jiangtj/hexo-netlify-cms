@@ -85,9 +85,13 @@ global_fields:
 ```
 
 Add scripts for custom components and preview styles
-E.g:    
+
+E.g:
+
 Add [youtube.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/youtube.js) to your blog
+
 Or add [img.js](https://github.com/JiangTJ/hexo-netlify-cms-example/blob/master/source/js/cms/img.js) to your blog
+
 ```yml
 netlify_cms:
   scripts:
