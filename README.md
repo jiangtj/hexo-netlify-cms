@@ -19,16 +19,30 @@ yarn add hexo-netlify-cms
 
 ### Step2: Open the service in Netlify
 
-1. You need to push your **source code** to the GitHub repository and use this project to enable the netlify service.
+- You need to push your **source code** to the GitHub repository and use this project to enable the netlify service.
 
-2. Open the netlify git-gateway service
-![](imgs/git-gateway.png)
+- Enable the netlify git-gateway service
+  ![](imgs/git-gateway.png)
 
-3. Add netlify-identity-widget.js, the code is as follows
-`<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`
-![](imgs/snippet.png)
+- Add netlify-identity-widget.js, you can choose one way as follow.
+  - If you use [next](https://github.com/theme-next/hexo-theme-next) or [cake](https://github.com/jiangtj/hexo-theme-cake) theme
+    ```yml
+    netlify_cms:
+      load_identity_widget: next # cake
+    ```
+  - Others, you can use [hexo-inject](https://github.com/hexojs/hexo-inject)
+    ```bash
+    yarn add hexo-inject
+    ```
+    ```yml
+    netlify_cms:
+      load_identity_widget: hexo
+    ```
+  - Or you can use netlify inject
+    `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`  
+    ![](imgs/snippet.png)
 
-**Note: It is recommended to set authentication to invitation only mode**
+**Note: set authentication to invitation only mode**
 
 Wait for the deployment to complete, visit `${your-site}/admin/` to view and use
 
