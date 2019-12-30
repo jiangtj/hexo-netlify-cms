@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
-const {mergeWith} = require('lodash');
+const { mergeWith } = require('lodash');
 const renderAdmin = require('./lib/renderAdmin');
 const cmsGenerator = require('./lib/cmsGenerator');
 
@@ -32,7 +32,19 @@ delete (config.scripts);
 let loadIdentityWidget = config.load_identity_widget;
 if (loadIdentityWidget) {
   delete (config.load_identity_widget);
-  let injectContent = '<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>';
+  let injectContent = `
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+  </script>`;
   if (loadIdentityWidget === 'next' || loadIdentityWidget === 'cake') {
     hexo.extend.filter.register('theme_inject', (injects) => {
       injects.head.raw('netlify-identity-widget', injectContent, {}, { cache: true, only: true });
