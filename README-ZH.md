@@ -21,25 +21,7 @@ yarn add hexo-netlify-cms
 - 需要将你的**源码**push至GitHub仓库，并使用该源码项目启用netlify服务
 
 - 需要开启netlify git-gateway服务
-  ![](imgs/git-gateway.png)  
-
-- 需要添加netlify-identity-widget.js至head中, 你可以在以下方法中选择其中一种
-  - 如果你使用[next](https://github.com/theme-next/hexo-theme-next)或者[cake](https://github.com/jiangtj/hexo-theme-cake)主题
-    ```yml
-    netlify_cms:
-      load_identity_widget: next # cake
-    ```
-  - 其它主题，使用[hexo-inject](https://github.com/hexojs/hexo-inject)
-    ```bash
-    yarn add hexo-inject
-    ```
-    ```yml
-    netlify_cms:
-      load_identity_widget: hexo
-    ```
-  - 或者使用netlify的注入
-    `<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>`  
-    ![](imgs/snippet.png)
+  ![](imgs/git-gateway.png)
 
 **注意： 将身份认证设为仅邀请模式**
 
