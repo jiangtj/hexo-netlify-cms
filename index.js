@@ -29,10 +29,7 @@ delete (config.scripts);
 /**
  * Inject netlify-identity-widget.js
  */
-let loadIdentityWidget = config.load_identity_widget;
-if (loadIdentityWidget) {
-  delete (config.load_identity_widget);
-  let injectContent = `
+let injectContent = `
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script>
   if (window.netlifyIdentity) {
@@ -45,17 +42,7 @@ if (loadIdentityWidget) {
     });
   }
   </script>`;
-  if (loadIdentityWidget === 'next' || loadIdentityWidget === 'cake') {
-    hexo.extend.filter.register('theme_inject', (injects) => {
-      injects.head.raw('netlify-identity-widget', injectContent, {}, { cache: true, only: true });
-    });
-  }
-  if (loadIdentityWidget === 'hexo') {
-    hexo.extend.filter.register('inject_ready', (inject) => {
-      inject.raw('head_end', injectContent)
-    })
-  }
-}
+hexo.extend.injector.register('body_end', injectContent, 'home');
 
 
 /**
