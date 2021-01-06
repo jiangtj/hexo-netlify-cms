@@ -20,7 +20,7 @@
   "private": false,
   "dependencies": {
     "ejs": "^3.0.1",
-    "js-yaml": "^3.12.1",
+    "js-yaml": "^4.0.0",
     "lodash": "^4.17.15"
   }
 }
