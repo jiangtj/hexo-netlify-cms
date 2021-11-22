@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const yaml = require('js-yaml');
+const { load } = require('js-yaml');
 const { mergeWith } = require('lodash');
 const renderAdmin = require('./lib/renderAdmin');
 const cmsGenerator = require('./lib/cmsGenerator');
@@ -12,10 +12,10 @@ const cmsGenerator = require('./lib/cmsGenerator');
  */
 hexo.config.netlify_cms = hexo.config.netlify_cms || {};
 let hexoConfig = hexo.config.netlify_cms;
-let defaultConfig = yaml.safeLoad(fs.readFileSync(path.join(__dirname, 'admin/config.yml')));
+let defaultConfig = load(fs.readFileSync(path.join(__dirname, 'admin/config.yml')));
 let configFileConfig = {}
 if (hexoConfig.config_file) {
-  configFileConfig = yaml.safeLoad(fs.readFileSync(hexoConfig.config_file));
+  configFileConfig = load(fs.readFileSync(hexoConfig.config_file));
   delete (hexoConfig.config_file);
 }
 let config = mergeWith({}, defaultConfig, configFileConfig, hexoConfig, (objValue, srcValue) => {
@@ -30,18 +30,19 @@ delete (config.scripts);
  * Inject netlify-identity-widget.js
  */
 let injectContent = `
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-  </script>`;
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
+`;
 hexo.extend.injector.register('body_end', injectContent, 'home');
 
 
