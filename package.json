@@ -19,7 +19,7 @@
   "license": "LGPL-3.0",
   "private": false,
   "dependencies": {
-    "ejs": "^3.1.6",
+    "ejs": "^5.0.1",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   }
